@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>SMS</title>
+
+        <!-- Bootstrap CSS CDN -->
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="css/style3.css">
+        <link rel="stylesheet" href="css/index.css">
+         <link rel="stylesheet" href="css/swiper.min.css">
+         <link rel="stylesheet" href="css/font-awesome.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
+<style>
+
+  
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+     /* background: #fff;*/
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    span{color:white;font-size: small;}
+   td img{width: 70%;text-align: center;}
+   td{    border-top: 0px solid #ddd !important;}
+    .navbar{
+    margin-bottom: 0px;
+   }
+  </style>
+    </head>
+    <body>
+
+  <div id="loading" class="loader">   
+    </div>
+        <div class="" ng-app="myApp"  ng-controller="HomeCtrl">
+            <!-- Sidebar Holder -->
+            <div ng-include="'publicsidebar.html'"></div>
+
+            <!-- Page Content Holder -->
+          
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header" >
+                          
+                     <img src="img/logo.png" width="10%" id="sidebarCollapse">
+                     <label style="font-size: large;"> &nbsp; {{Title}}</label>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                                <li><a href="#">Page</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+   
+
+
+
+    <div class="text-center">
+
+<iframe style="border: none;" src="http://localhost:38487/webpage/cmsdata.aspx?id=2" width="100%" height="1200px"></iframe>
+
+</div>
+         
+        </div>
+
+
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Bootstrap Js CDN -->
+          <script src="js/angular.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script type="text/javascript" src="js/sc_index.js"></script>
+        <script src="js/swiper.min.js"></script>
+
+        <script>
+    var app = angular.module('myApp', []);
+    app.controller('HomeCtrl', function ($scope, $http) {
+
+
+$scope.Title = "Gyandeep Public School";
+
+});
+
+</script>
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+          <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true,
+      },
+    });
+  </script>
+    </body>
+</html>
