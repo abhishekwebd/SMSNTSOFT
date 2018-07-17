@@ -65,7 +65,7 @@
     // device APIs are available
     //
     function onDeviceReady() {
-         iabRef = window.open('http://stnms.in', '_blank', 'location=yes');
+         iabRef = window.open(sessionStorage.getItem("weburl"), '_blank', 'location=yes');
          iabRef.addEventListener('loadstart', iabLoadStart);
          iabRef.addEventListener('loadstop', iabLoadStop);
          iabRef.addEventListener('loaderror', iabLoadError);
