@@ -53,6 +53,7 @@
    td img{width: 70%;text-align: center;}
    td{    border-top: 0px solid #ddd !important;}
   </style>
+
     </head>
     <body>
 
@@ -203,6 +204,14 @@ $scope.mCalendar = function(){
                     $('.collapse.in').toggleClass('in');
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
+
+
+        localStorage.setItem("serverpath","http://localhost:8080/SMS/");
+        sessionStorage.setItem("aboutiframelink","http://stnms.in/webpage/cmsdata.aspx?id=5");
+        sessionStorage.setItem("contactiframelink","http://stnms.in/webpage/cmsdata.aspx?id=6");
+        sessionStorage.setItem("managementiframelink","http://stnms.in/webpage/cmsdata.aspx?id=7");
+        sessionStorage.setItem("academiciframelink","http://stnms.in/webpage/cmsdata.aspx?id=8");
+
             });
         </script>
           <script>

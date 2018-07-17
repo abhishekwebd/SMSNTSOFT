@@ -52,6 +52,7 @@
     margin-bottom: 0px;
    }
   </style>
+
     </head>
     <body>
 
@@ -89,7 +90,7 @@
 
     <div class="text-center">
 
-<iframe style="border: none;" src="http://localhost:38487/webpage/cmsdata.aspx?id=1" width="100%" height="1200px"></iframe>
+<iframe style="border: none;"  width="100%" height="1200px"></iframe>
 
 </div>
          
@@ -140,8 +141,14 @@ $scope.Title = "Gyandeep Public School";
                     $('.collapse.in').toggleClass('in');
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
+
+
+         $("iframe").attr("src",sessionStorage.getItem("aboutiframelink"));
+        //$("iframe").attr("src","http://localhost:38487/webpage/cmsdata.aspx?id=1");
             });
         </script>
+
+
           <script>
     var swiper = new Swiper('.swiper-container', {
       pagination: {
