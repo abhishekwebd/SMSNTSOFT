@@ -62,13 +62,13 @@ body{
 
   <div id="loading" class="loader">   
     </div>
-        <div ng-app="myApp"  ng-controller="HomeCtrl" class="ak-card-4">
+        <div ng-app="myApp"  ng-controller="HomeCtrl">
             <!-- Sidebar Holder -->
             <div ng-include="'sidebar.html'"></div>
 
             <!-- Page Content Holder -->
           
-                <nav class="navbar navbar-default">
+                <nav class="navbar navbar-default ak-card-4">
                     <div class="container-fluid">
 
                         <div class="navbar-header" >
@@ -209,7 +209,8 @@ $scope.mCalendar = function(){
                 });
 
 
-        localStorage.setItem("serverpath","http://localhost:8080/SMS/");
+        // localStorage.setItem("serverpath","http://localhost:8080/SMS/");
+        localStorage.setItem("serverpath","http://stnms.in/SMS/");
         sessionStorage.setItem("aboutiframelink","http://stnms.in/webpage/cmsdata.aspx?id=5");
         sessionStorage.setItem("contactiframelink","http://stnms.in/webpage/cmsdata.aspx?id=6");
         sessionStorage.setItem("managementiframelink","http://stnms.in/webpage/cmsdata.aspx?id=7");
