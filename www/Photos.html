@@ -11,23 +11,21 @@
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/ak.css">
         <link rel="stylesheet" href="css/style3.css">
         <link rel="stylesheet" href="css/index.css">
          <link rel="stylesheet" href="css/swiper.min.css">
          <link rel="stylesheet" href="css/font-awesome.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <style type="text/css">
-    body{
-      background:url(images/back1.jpg);
-    }
-</style>
+    <link rel="stylesheet" href="vlb_files1/vlightbox1.css" type="text/css" />
+    <link rel="stylesheet" href="vlb_files1/visuallightbox.css" type="text/css" media="screen" />
 
+        <!-- jQuery CDN -->
+        <script src="js/jquery.min.js"></script>
+    <script src="vlb_engine/visuallightbox.js" type="text/javascript"></script>
 <style>
-body{
 
-}  
+  
     .swiper-container {
       width: 100%;
       height: 100%;
@@ -54,7 +52,9 @@ body{
     span{color:white;font-size: small;}
    td img{width: 70%;text-align: center;}
    td{    border-top: 0px solid #ddd !important;}
-}
+   .navbar{
+    margin-bottom: 0px;
+   }
   </style>
 
     </head>
@@ -62,17 +62,18 @@ body{
 
   <div id="loading" class="loader">   
     </div>
-        <div ng-app="myApp"  ng-controller="HomeCtrl">
+        <div class="" ng-app="myApp"  ng-controller="HomeCtrl">
             <!-- Sidebar Holder -->
-            <div ng-include="'sidebar.html'"></div>
+            <div ng-include="'publicsidebar.html'"></div>
 
             <!-- Page Content Holder -->
           
-                <nav class="navbar navbar-default ak-card-4">
+                <nav class="navbar navbar-default">
                     <div class="container-fluid">
 
                         <div class="navbar-header" >
-                     <img src="img/logo.png" width="10%">
+                          
+                     <img src="img/logo.png" width="10%" id="sidebarCollapse">
                      <label style="font-size: large;"> &nbsp; {{Title}}</label>
                         </div>
 
@@ -88,48 +89,23 @@ body{
                 </nav>
 
    
-  <div id="">
-
-
-    <div class="text-center " >
 
 
 
-  <!-- Swiper -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-            <table class="table" >
-              <tr>
-                <td><img src="img/1.png" ng-click="mAbout()"><br><span>About</span></td>
-                 <td><img src="img/4.png" ng-click="mContact()"><br><span>Contact</span></td>
-                 <td><img src="img/5.png" ng-click="mGallery()"><br><span>Gallery</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/6.png" ng-click="mManagement()"><br><span>Management</span></td>
-                 <td><img src="img/7.png" ng-click="mLogin()"><br><span>Login</span></td>
-                 <td><img src="img/8.png" ng-click="mCalendar()"><br><span>Calendar</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/9.png" ng-click="mNotice()"><br><span>Notice</span></td>
-                 <td><img src="img/10.png" ng-click="mNews()"><br><span>News & Events</span></td>
-                 <td><img src="img/15.png" ng-click="mUrl()"><br><span>Website Url</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/16.png" ng-click="mAcademics()"><br><span>Academics</span></td>
-               
-              </tr>
-            </table>
-      </div>
-
-
-    </div>
-    <!-- Add Pagination -->
-   <!--  <div class="swiper-pagination"></div> -->
+    <div class="text-center">
+<br><br>
+  <div id="vlightbox1">
+  <a class="vlightbox1" href="vlb_images1/02.jpg" title="02"><img src="vlb_thumbnails1/02.jpg" alt="02"/></a>
+<a class="vlightbox1" href="vlb_images1/03.jpg" title="03"><img src="vlb_thumbnails1/03.jpg" alt="03"/></a>
+<a class="vlightbox1" href="vlb_images1/04.jpg" title="04"><img src="vlb_thumbnails1/04.jpg" alt="04"/></a>
+<a class="vlightbox1" href="vlb_images1/05.jpg" title="05"><img src="vlb_thumbnails1/05.jpg" alt="05"/></a>
+<a class="vlightbox1" href="vlb_images1/06.jpg" title="06"><img src="vlb_thumbnails1/06.jpg" alt="06"/></a>
+<a class="vlightbox1" href="vlb_images1/01.jpg" title="01"><img src="vlb_thumbnails1/01.jpg" alt="01"/></a>
+<span class="vlb"><a href="http://visuallightbox.com">jquery slider lightbox</a>by VisualLightBox.com v6.0</span>
   </div>
 
 </div>
-            </div>
+         
         </div>
 
 
@@ -137,12 +113,14 @@ body{
         <div class="overlay"></div>
 
 
-        <!-- jQuery CDN -->
-        <script src="js/jquery.min.js"></script>
         <!-- Bootstrap Js CDN -->
           <script src="js/angular.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <!-- jQuery Custom Scroller CDN -->
+        <!-- jQuery Custom Scroller CDN --> 
+
+        <script src="vlb_engine/vlbdata1.js" type="text/javascript"></script>
+  <!-- End VisualLightBox.com BODY section -->
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 <script type="text/javascript" src="js/sc_index.js"></script>
@@ -155,36 +133,6 @@ body{
 
 $scope.Title = "Gyandeep Public School";
 
-$scope.mLogin = function(){
-  window.location.href = "login.html";
-}
-$scope.mAbout = function(){
-  window.location.href = "about.html";
-}
-$scope.mContact = function(){
-  window.location.href = "Contact.html";
-}
-$scope.mGallery = function(){
-  window.location.href = "Gallery.html";
-}
-$scope.mNotice = function(){
-  window.location.href = "Notice.html";
-}
-$scope.mNews = function(){
-  window.location.href = "News.html";
-}
-$scope.mUrl = function(){
-  window.location.href = "Website.html";
-}
-$scope.mAcademics = function(){
-  window.location.href = "Academics.html";
-}
-$scope.mManagement = function(){
-  window.location.href = "Management.html";
-}
-$scope.mCalendar = function(){
-  window.location.href = "Calendar.html";
-}
 });
 
 </script>
@@ -209,17 +157,13 @@ $scope.mCalendar = function(){
                 });
 
 
-        // localStorage.setItem("serverpath","http://localhost:8080/SMS/");
-        localStorage.setItem("serverpath","http://stnms.in/SMS/");
-        sessionStorage.setItem("aboutiframelink","http://stnms.in/webpage/cmsdata.aspx?id=5");
-        sessionStorage.setItem("contactiframelink","http://stnms.in/webpage/cmsdata.aspx?id=6");
-        sessionStorage.setItem("managementiframelink","http://stnms.in/webpage/cmsdata.aspx?id=7");
-        sessionStorage.setItem("academiciframelink","http://stnms.in/webpage/cmsdata.aspx?id=8");
-        sessionStorage.setItem("calendariframelink","http://stnms.in/webpage/appCalendar.aspx");
-        sessionStorage.setItem("weburl","http://stnms.in");
-
+       
             });
+
+
         </script>
+
+
           <script>
     var swiper = new Swiper('.swiper-container', {
       pagination: {
@@ -227,6 +171,9 @@ $scope.mCalendar = function(){
         dynamicBullets: true,
       },
     });
+
+
+
   </script>
     </body>
 </html>
