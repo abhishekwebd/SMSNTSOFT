@@ -56,7 +56,11 @@
     margin-bottom: 0px;
    }
   </style>
-
+   <style type="text/css">
+    body{
+      background:url(images/back1.jpg);
+    }
+</style>
     </head>
     <body>
 
@@ -93,15 +97,14 @@
 
 
     <div class="text-center">
-<br><br>
+<br><a href="Gallery.html" class="pull-left btn btn-warning" style="position: fixed;top: 13%;left: 0%;"><i class="fa fa-backward"></i></a>
+<h4 style="color: black;"><i class="fa fa-file-image-o "></i> Photos</h4>
+
+<br>
   <div id="vlightbox1">
-  <a class="vlightbox1" href="vlb_images1/02.jpg" title="02"><img src="vlb_thumbnails1/02.jpg" alt="02"/></a>
-<a class="vlightbox1" href="vlb_images1/03.jpg" title="03"><img src="vlb_thumbnails1/03.jpg" alt="03"/></a>
-<a class="vlightbox1" href="vlb_images1/04.jpg" title="04"><img src="vlb_thumbnails1/04.jpg" alt="04"/></a>
-<a class="vlightbox1" href="vlb_images1/05.jpg" title="05"><img src="vlb_thumbnails1/05.jpg" alt="05"/></a>
-<a class="vlightbox1" href="vlb_images1/06.jpg" title="06"><img src="vlb_thumbnails1/06.jpg" alt="06"/></a>
-<a class="vlightbox1" href="vlb_images1/01.jpg" title="01"><img src="vlb_thumbnails1/01.jpg" alt="01"/></a>
-<span class="vlb"><a href="http://visuallightbox.com">jquery slider lightbox</a>by VisualLightBox.com v6.0</span>
+  <a class="vlightbox1"  ng-repeat="x in details" href="http://stnms.in/slides/{{x.Image}}" title="x.Title"><img width="150px" src="http://stnms.in/thumbs/{{x.Image}}" alt="02" style="margin:5px; border-radius: 10px; "  />
+<b>{{x.Title}}</b>
+  </a>
   </div>
 
 </div>
@@ -130,8 +133,12 @@
     var app = angular.module('myApp', []);
     app.controller('HomeCtrl', function ($scope, $http) {
 
-
 $scope.Title = "Gyandeep Public School";
+ var q = "SELECT * FROM PHOTOGALLERY WHERE ALBUMID="+sessionStorage.getItem("publicalbumid");
+
+         $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
+            {$scope.details = response.data.result; });
+
 
 });
 

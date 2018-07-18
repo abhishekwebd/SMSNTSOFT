@@ -61,6 +61,7 @@ if(localStorage.getItem("Code") != null){
 		background:url(images/back1.jpg);
 		background-size: auto !important;
 	}
+	.form-control{display:block;width:100%;height:34px;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}
 </style>
 </head>
 
@@ -79,8 +80,13 @@ if(localStorage.getItem("Code") != null){
 			<div class="main-content-agile">
 				<div class="sub-main-w3">
 					<img src="img/logo.png" style="width:50%; " alt="" ng-click="Home()" />
-				<br><br><br><br>	<h2>LOGIN</h2>
+				<br><br>
 
+					<div class="pom-agile">
+						<select class="form-control" ng-model="usertype" ng-options="opt.value as opt.name for opt in usertype">
+							<option value="" selected="selected" disabled="">Select User Type</option>
+						</select>
+					</div>
 					<div class="pom-agile">
 						<span class="fa fa-user-o" aria-hidden="true"></span>
 						<input placeholder="Control No" name="Controlno" class="user" ng-model="username" type="text" required="">
@@ -116,6 +122,12 @@ if(localStorage.getItem("Code") != null){
 	var app = angular.module('myApp', []);
 	app.controller('RecordCtrl', function ($scope, $http) {
   
+  	$scope.usertype = [
+  						{name :'Admin', value :1},
+  						{name:'Teacher', value:2},
+  						{name : 'Parents', value:3},
+  						{name : 'Student',value:4}
+  						];
     $scope.Login = function () {
 	window.location.href = "Home.html";
         // http = localStorage.getItem("serverpath")+"staffdata.php?Code=logincheck&username="+$scope.username+"&password="+$scope.password;//the REST service Server to fetch the day stock 
