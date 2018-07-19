@@ -83,8 +83,12 @@ if(localStorage.getItem("Code") != null){
 				<br><br>
 
 					<div class="pom-agile">
-						<select class="form-control" ng-model="usertype" ng-options="opt.value as opt.name for opt in usertype">
-							<option value="" selected="selected" disabled="">Select User Type</option>
+						<select class="form-control" id="usertype" >
+						<option selected="" disabled="">Select User Type</option>
+							<option value="1">Admin</option>
+							<option value="2">Teacher</option>
+							<option value="2">Parent</option>
+							<option value="4">Student</option>
 						</select>
 					</div>
 					<div class="pom-agile">
@@ -122,12 +126,7 @@ if(localStorage.getItem("Code") != null){
 	var app = angular.module('myApp', []);
 	app.controller('RecordCtrl', function ($scope, $http) {
   
-  	$scope.usertype = [
-  						{name :'Admin', value :1},
-  						{name:'Teacher', value:2},
-  						{name : 'Parents', value:3},
-  						{name : 'Student',value:4}
-  						];
+  	
     $scope.Login = function () {
 	window.location.href = "Home.html";
         // http = localStorage.getItem("serverpath")+"staffdata.php?Code=logincheck&username="+$scope.username+"&password="+$scope.password;//the REST service Server to fetch the day stock 
