@@ -131,15 +131,15 @@
 
 $scope.Title = "Gyandeep Public School";
 
-   var q = "SELECT  top 10 sys_id,value FROM i_combine WHERE trmd=1 AND is_deactive=0 ";
+   var q = "SELECT  top 10 sys_id,value FROM i_combine WHERE trmd=1 AND is_deactive=0 order by sys_id desc";
        // alert(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q);
          $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
             {$scope.details = response.data.result; });
 
          $scope.viewinfo = function(id){
 
-          sessionStorage.setItem("noticeidfordetail",id);
-          window.location.href= "noticedetail.html";
+          sessionStorage.setItem("newsidfordetail",id);
+          window.location.href= "newsdetail.html";
 
          }
 });

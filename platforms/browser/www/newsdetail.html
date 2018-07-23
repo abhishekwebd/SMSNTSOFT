@@ -11,23 +11,17 @@
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/ak.css">
         <link rel="stylesheet" href="css/style3.css">
         <link rel="stylesheet" href="css/index.css">
          <link rel="stylesheet" href="css/swiper.min.css">
          <link rel="stylesheet" href="css/font-awesome.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-        <style type="text/css">
-    body{
-      background:url(images/back1.jpg);
-    }
-</style>
+
 
 <style>
-body{
 
-}  
+  
     .swiper-container {
       width: 100%;
       height: 100%;
@@ -51,20 +45,25 @@ body{
       -webkit-align-items: center;
       align-items: center;
     }
-    span{color:black;font-size: small;}
+    span{color:white;font-size: small;}
    td img{width: 70%;text-align: center;}
-   td{    border-top: 0px solid #ddd !important;}
-}
-  </style>
-
+   td{    border-top: 0px solid #ddd !important; font-size: smaller;}
+   .navbar{
+    margin-bottom: 0px;
+   }
+  
+    body{
+      background:url(images/back1.jpg);
+    }
+</style>
     </head>
     <body>
 
   <div id="loading" class="loader">   
     </div>
-        <div ng-app="myApp"  ng-controller="HomeCtrl">
+        <div class="" ng-app="myApp"  ng-controller="HomeCtrl">
             <!-- Sidebar Holder -->
-            <div ng-include="'sidebar.html'"></div>
+            <div ng-include="'publicsidebar.html'"></div>
 
             <!-- Page Content Holder -->
           
@@ -72,7 +71,8 @@ body{
                     <div class="container-fluid">
 
                         <div class="navbar-header" >
-                     <img src="img/logo.png" width="10%">
+                          
+                     <img src="img/logo.png" width="10%" id="sidebarCollapse">
                      <label style="font-size: large;"> &nbsp; {{Title}}</label>
                         </div>
 
@@ -88,48 +88,30 @@ body{
                 </nav>
 
    
-  <div id="">
-
-
-    <div class="text-center " >
 
 
 
-  <!-- Swiper -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-            <table class="table" >
-              <tr>
-                <td><img src="img/1.png" ng-click="mAbout()"><br><span>About</span></td>
-                 <td><img src="img/4.png" ng-click="mContact()"><br><span>Contact</span></td>
-                 <td><img src="img/5.png" ng-click="mGallery()"><br><span>Gallery</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/6.png" ng-click="mManagement()"><br><span>Management</span></td>
-                 <td><img src="img/7.png" ng-click="mLogin()"><br><span>Login</span></td>
-                 <td><img src="img/8.png" ng-click="mCalendar()"><br><span>Calendar</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/9.png" ng-click="mNotice()"><br><span>Notice</span></td>
-                 <td><img src="img/10.png" ng-click="mNews()"><br><span>News & Events</span></td>
-                 <td><img src="img/15.png" ng-click="mUrl()"><br><span>Website Url</span></td>
-              </tr>
-                 <tr>
-                <td><img src="img/16.png" ng-click="mAcademics()"><br><span>Academics</span></td>
-               
-              </tr>
-            </table>
-      </div>
+    <div style="margin:15px;">
 
+            <h4 style="color: black;"><i class="fa fa-newspaper-o" ></i> News & Events</h4>
 
+<br>
+<table class="table table-bordered" style="background-color: white;">
+  <tr class="alert alert-info">
+    <th colspan="2"> <i class="fa fa-spinner"></i> Event Detail <i class="fa fa-spinner"></i> </th>
+  </tr>
+  <tr>
+    <td>{{mTitle}}</td>
+  </tr>
+    <tr>
+    <td ><div id="mDescription"></div></td>
+  </tr>
+
+</table>
+
+    <button ng-click="goback()" class="btn btn-warning pull-right"><i class="fa fa-step-backward"></i> Go Back</button>
     </div>
-    <!-- Add Pagination -->
-   <!--  <div class="swiper-pagination"></div> -->
-  </div>
-
-</div>
-            </div>
+         
         </div>
 
 
@@ -155,37 +137,21 @@ body{
 
 $scope.Title = "Gyandeep Public School";
 
-$scope.mLogin = function(){
-  window.location.href = "login.html";
-}
-$scope.mAbout = function(){
-  window.location.href = "about.html";
-}
-$scope.mContact = function(){
-  window.location.href = "Contact.html";
-}
-$scope.mGallery = function(){
-  window.location.href = "Gallery.html";
-}
-$scope.mNotice = function(){
-  window.location.href = "Notice.html";
-}
-$scope.mNews = function(){
-  window.location.href = "News.html";
-}
-$scope.mUrl = function(){
-  window.location.href = "Website.html";
-}
-$scope.mAcademics = function(){
-  window.location.href = "Academics.html";
-}
-$scope.mManagement = function(){
-  window.location.href = "Management.html";
-}
-$scope.mCalendar = function(){
-  window.location.href = "Calendar.html";
-}
+   var q = "SELECT  value,value2 FROM i_combine WHERE sys_id = "+sessionStorage.getItem("noticeidfordetail");
+  // alert(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q);
+         $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
+            {
+                $scope.mTitle = response.data.result[0].value;
+                $("#mDescription").html(response.data.result[0].value2);
+              //  $scope.mDescription = response.data.result[0].Description;
+             });
+         $scope.goback = function()
+         {
+          window.location.href = "News.html";
+         }
 });
+
+   
 
 </script>
 
@@ -208,18 +174,12 @@ $scope.mCalendar = function(){
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
 
-
-        // localStorage.setItem("serverpath","http://localhost:8080/SMS/");
-        localStorage.setItem("serverpath","http://stnms.in/SMS/");
-        sessionStorage.setItem("aboutiframelink","http://stnms.in/webpage/cmsdata.aspx?id=5");
-        sessionStorage.setItem("contactiframelink","http://stnms.in/webpage/cmsdata.aspx?id=6");
-        sessionStorage.setItem("managementiframelink","http://stnms.in/webpage/cmsdata.aspx?id=7");
-        sessionStorage.setItem("academiciframelink","http://stnms.in/webpage/cmsdata.aspx?id=8");
-        sessionStorage.setItem("calendariframelink","http://stnms.in/webpage/appCalendar.aspx");
-        sessionStorage.setItem("weburl","http://stnms.in");
+                
 
             });
         </script>
+
+
           <script>
     var swiper = new Swiper('.swiper-container', {
       pagination: {
