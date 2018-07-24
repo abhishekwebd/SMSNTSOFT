@@ -137,7 +137,7 @@
 
 $scope.Title = "Gyandeep Public School";
 
-   var q = "SELECT  value,value2 FROM i_combine WHERE sys_id = "+sessionStorage.getItem("noticeidfordetail");
+   var q = "SELECT  value,value2 FROM i_combine WHERE sys_id = "+sessionStorage.getItem("newsidfordetail");
   // alert(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q);
          $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
             {

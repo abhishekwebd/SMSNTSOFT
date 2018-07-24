@@ -101,7 +101,7 @@ body{
       <div class="swiper-slide">
             <table class="table" >
               <tr>
-                <td><img src="img/1.png" ng-click="mAbout()"><br><span>About</span></td>
+                <td ><img src="img/1.png"  ng-click="mAbout()"><br><span>About</span></td>
                  <td><img src="img/4.png" ng-click="mContact()"><br><span>Contact</span></td>
                  <td><img src="img/5.png" ng-click="mGallery()"><br><span>Gallery</span></td>
               </tr>
@@ -208,6 +208,7 @@ $scope.mCalendar = function(){
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
 
+                $("td").addClass("ak-card-4");
 
         // localStorage.setItem("serverpath","http://localhost:8080/SMS/");
         localStorage.setItem("serverpath","http://stnms.in/SMS/");
