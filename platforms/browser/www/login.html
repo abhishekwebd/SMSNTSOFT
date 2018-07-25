@@ -152,7 +152,7 @@ body{
 
 							q = "exec APIuserLogin "+$scope.branchselect+", '"+$scope.username+"', '"+$scope.password+"' , '"+$scope.UserType+"'";
         http = localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q;//the REST service Server to fetch the day stock 
-     alert(http);
+   //  alert(http);
         $http.get(http)
         .then(function (response) { 
         	if(response.data.result[0].auth == "true")
@@ -160,6 +160,7 @@ body{
         			localStorage.setItem("sys_id",response.data.result[0].sys_id);
         			localStorage.setItem("name",response.data.result[0].name);
         			localStorage.setItem("usertype",response.data.result[0].UserType);
+        			localStorage.setItem("branchcode",$scope.branchselect);
         		if(response.data.result[0].UserType == 1)
         		{
         			window.location.href = "admin/home.html";

@@ -87,14 +87,15 @@
 
 
   <div style="padding: 5%;">
-    <button class="btn btn-primary ak-right"><i class="fa fa-comment"></i> Send Message </button>
+    <a class="btn btn-primary ak-right" href="sendMsg.html"><i class="fa fa-comment"></i> Send Message </a>
   </div>
   <div class="" style="padding:5%;font-size: small;">
 
-    <div class="panel panel-primary ak-card-4" ng-repeat="x in details">
+    <div class="panel panel-primary ak-card-4" ng-repeat="x in details" ng-click="ViewMsg(x.sys_id)">
       <div class="panel-heading">Date : {{x.DateTime}}</div>
       <div class="panel-body">
-        <b>From : {{x.FName}}</b><br>
+        <b>From : {{x.sender}}</b>
+        <hr>
         {{x.subject}}
       </div>
     </div>
@@ -128,15 +129,17 @@
     $scope.Title = "Gyandeep Public School";
     $scope.username =  localStorage.getItem("name");
 
-    var q = "select i_messages.sys_id,sender,recever,subject,Message,DateTime,isNotify,FName from i_messages inner join i_Users on i_messages.sender = i_Users.sys_id where i_messages.recever = "+localStorage.getItem("sys_id")+" order by i_messages.sys_id desc";
+    var q = "exec APImessageInbox "+localStorage.getItem("branchcode")+","+localStorage.getItem("sys_id");
    
     $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
-    {
-    
-        $scope.details = response.data.result; 
-      
-  
+    { 
+      $scope.details = response.data.result; 
     });
+
+    $scope.ViewMsg = function(sys_id){
+      sessionStorage.setItem("ViewMsgid",sys_id);
+      window.location.href = "MsgDetail.html";
+    }
 
   });
 

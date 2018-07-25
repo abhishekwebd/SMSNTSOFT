@@ -86,19 +86,51 @@
   </nav>
 
 
-  <div style="padding: 5%;">
-    <a class="btn btn-primary ak-right" href="sendMsg.html"><i class="fa fa-comment"></i> Send Message </a>
-  </div>
   <div class="" style="padding:5%;font-size: small;">
 
-    <div class="panel panel-primary ak-card-4" ng-repeat="x in details" ng-click="ViewMsg(x.sys_id)">
-      <div class="panel-heading">Date : {{x.DateTime}}</div>
-      <div class="panel-body">
-        <b>From : {{x.sender}}</b>
-        <hr>
-        {{x.subject}}
-      </div>
-    </div>
+<table class="table">
+  <tr style="border:2px solid #101010 !important;">
+    <td colspan="2" class="text-center"><i class="fa fa-2x fa-envelope-o"></i><br><h3>Send Message</h3></td>
+  </tr>
+</table>
+<table class="table table-bordered">
+  <tr>
+    <td>
+      Select User Type
+    </td>
+    <td>
+      <select class="form-control" id="UserType" ng-init="UserType" ng-model="UserType" ng-change="UpdateClass()">
+              <option value="" selected="" disabled="">Select User Type</option>
+
+              <option ng-repeat="x in usertype" value="{{x.id}}">{{x.name}}</option>
+            </select>
+    </td>
+  </tr>
+  <tr id="trClass" style="display: none;">
+    <td>
+      Select Class
+    </td>
+    <td>
+           <select class="form-control" id="Class" ng-init="Class" ng-model="Class" >
+              <option value="" selected="" disabled="">Select Class</option>
+
+              <option ng-repeat="x in classes" value="{{x.id}}">{{x.name}}</option>
+            </select>
+    </td>
+  </tr>
+    <tr>
+    <td>
+      Select User
+    </td>
+    <td>
+           <select class="form-control" id="receiver" ng-init="receiver" ng-model="receiver" >
+              <option value="" selected="" disabled="">Select User</option>
+
+              <option ng-repeat="x in receiver" value="{{x.id}}">{{x.name}}</option>
+            </select>
+    </td>
+  </tr>
+</table>
 
   </div>
 
@@ -125,21 +157,26 @@
   var app = angular.module('myApp', []);
   app.controller('HomeCtrl', function ($scope, $http) {
 
+    $scope.usertype = [
+          {name:'Admin', id:1},
+          {name:'Teacher', id:2},
+          {name:'Parent', id:3},
+          {name:'Student', id:4}
+          ]
 
     $scope.Title = "Gyandeep Public School";
     $scope.username =  localStorage.getItem("name");
 
-    var q = "exec APImessageInbox "+localStorage.getItem("branchcode")+","+localStorage.getItem("sys_id");
-   
-    $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
-    { 
-      $scope.details = response.data.result; 
-    });
+  $scope.UpdateClass = function(){
+     
+    if($scope.UserType == 3 || $scope.UserType == 4){
 
-    $scope.ViewMsg = function(sys_id){
-      sessionStorage.setItem("ViewMsgid",sys_id);
-      window.location.href = "MsgDetail.html";
+      $("#trClass").css("display","contents");
+    }else{
+            $("#trClass").css("display","none");
     }
+  }
+
 
   });
 

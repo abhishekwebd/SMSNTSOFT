@@ -86,19 +86,25 @@
   </nav>
 
 
-  <div style="padding: 5%;">
-    <a class="btn btn-primary ak-right" href="sendMsg.html"><i class="fa fa-comment"></i> Send Message </a>
-  </div>
   <div class="" style="padding:5%;font-size: small;">
 
-    <div class="panel panel-primary ak-card-4" ng-repeat="x in details" ng-click="ViewMsg(x.sys_id)">
-      <div class="panel-heading">Date : {{x.DateTime}}</div>
-      <div class="panel-body">
-        <b>From : {{x.sender}}</b>
-        <hr>
-        {{x.subject}}
-      </div>
-    </div>
+<table class="table table-bordered">
+  <tr style="background-color: #0c8b98;color: white;">
+    <td>From : {{from}}</td>
+  </tr>
+  <tr style="background-color: #18a9b7;color: white;">
+    <td>Subject : {{subject}}</td>
+  </tr>
+  <tr style="background-color: #1ac3d4;color: white;">
+    <td><div id="message"></div></td>
+  </tr>
+  <tr>
+    <td class="pull-right">
+    <a href="home.html" ><i class="fa fa-chevron-circle-left"></i> Go Back</a>  
+    </td>
+    
+  </tr>
+</table>
 
   </div>
 
@@ -129,17 +135,15 @@
     $scope.Title = "Gyandeep Public School";
     $scope.username =  localStorage.getItem("name");
 
-    var q = "exec APImessageInbox "+localStorage.getItem("branchcode")+","+localStorage.getItem("sys_id");
+    var q = "select Fname,subject,Message from i_messages inner join i_Users on i_messages.sender = i_Users.sys_id where i_messages.sys_id = "+sessionStorage.getItem("ViewMsgid");
    
     $http.get(localStorage.getItem("serverpath")+"data.php?Code=execute&q="+q).then(function (response) 
     { 
-      $scope.details = response.data.result; 
+      $scope.from = response.data.result[0].Fname;
+      $scope.subject = response.data.result[0].subject;
+         $("#message").html(response.data.result[0].Message);
     });
 
-    $scope.ViewMsg = function(sys_id){
-      sessionStorage.setItem("ViewMsgid",sys_id);
-      window.location.href = "MsgDetail.html";
-    }
 
   });
 
